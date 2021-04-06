@@ -1,2 +1,7 @@
-variable "public_subnet" {
+variable "public_subnetA" {
 }
+
+variable "public_subnetB" {
+}
+
+

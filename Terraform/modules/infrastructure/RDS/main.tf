@@ -36,5 +36,5 @@ resource "aws_db_instance" "test" {
 
 resource "aws_db_subnet_group" "default" {
     name          = "master"
-    subnet_id     = var.public_subnet
+    subnet_ids    = [var.public_subnetA , var.public_subnetB]
 }
