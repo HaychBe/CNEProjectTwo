@@ -1,7 +1,3 @@
-variable "public_subnetA" {
+variable "region" {
+    default = "eu-west-2"
 }
-
-variable "public_subnetB" {
-}
-
-

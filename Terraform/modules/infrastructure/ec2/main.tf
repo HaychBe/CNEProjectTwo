@@ -1,21 +1,16 @@
 resource "aws_instance" "instance" {
     ami                         = var.ami_id
-    instance_type               = "t2.micro"
-    subnet_id                   = var.public_subnet
-    associate_public_ip_address = true   
+    instance_type               = var.instance_type
+    associate_public_ip_address = true
+    subnet_id                   = var.subnet_id   
+    vpc_security_group_ids      = var.vpc_security_group_ids
+    key_name                    = "haych_aws"
+
+    lifecycle {
+        create_before_destroy = true
+    }
 
     tags = {
         Name = "ProjectTwo-VM"
     }
 }
-
-# resource "aws_instance" "test_instance" {
-#     ami                         = var.ami_id
-#     instance_type               = "t2.micro"
-#     subnet_id                   = var.public_subnet
-#     associate_public_ip_address = true
-
-#     tags = {
-#         Name = "ProjectTwo-test-VM"
-#     }
-# }

@@ -1,25 +1,25 @@
-resource "aws_vpc" "main" {
-    cidr_block  = "10.0.0.0/16"
+data "aws_availability_zones" "available" {
+    state = "available"
+}
 
-    tags = {
-        Name = "ProjectTwo-VPC"
-    }
+resource "aws_vpc" "main" {
+
+    cidr_block = var.vpc-cidr
+    instance_tenancy = "default"
 }
 
 resource "aws_subnet" "public_subnetA" {
-    vpc_id      = var.vpc_id
-    cidr_block  = "10.0.0.0/24"
 
-    tags = {
-        Name = "ProjectTwo-Subnet_publicA"
-    }
+    cidr_block = var.public_subnetA
+    availability_zone = data.aws_availability_zones.available.names[0]
+    vpc_id = aws_vpc.main.id
+    map_public_ip_on_launch = true
 }
 
 resource "aws_subnet" "public_subnetB" {
-    vpc_id      = var.vpc_id
-    cidr_block  = "10.0.1.0/24"
 
-    tags = {
-        Name = "ProjectTwo-Subnet_publicB"
-    }
+    cidr_block = var.public_subnetB
+    availability_zone = data.aws_availability_zones.available.names[0]
+    vpc_id = aws_vpc.main.id
+    map_public_ip_on_launch = true
 }
