@@ -1,0 +1,32 @@
+---
+# tasks file for jenkins
+
+- name: Get Jenkins REPO
+  get_url:
+    url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo 
+
+- name: Import Jenkins key
+  rpm_key:
+    state: present
+    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+- name: install Jenkins
+  apt:
+    name: jenkins
+    state: present
+
+- name: Start jenkins
+  systemd:
+    name: jenkins
+    state: started
+    enabled: true
+
+- name: get admin pass
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+
+- name: Print init password Jenkins
+  debug:
+    var: result.stdout
