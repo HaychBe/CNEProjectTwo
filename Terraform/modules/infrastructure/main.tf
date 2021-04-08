@@ -31,3 +31,13 @@ module "ec2_instanceTest" {
     subnet_id = module.aws_vpc.public_subnetB
     vpc_security_group_ids = [module.security_group.aws_psg_id]
 }
+
+module "RDS_instances" {
+    source                  = "./RDS"
+    username                = var.username
+    password                = var.password
+    public_subnetA          = module.aws_vpc.public_subnetA
+    public_subnetB          = module.aws_vpc.public_subnetB
+    vpc_security_group_ids  = [module.security_group.aws_psg_id]
+
+}

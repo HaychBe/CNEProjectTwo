@@ -4,7 +4,7 @@ resource "aws_instance" "instance" {
     associate_public_ip_address = true
     subnet_id                   = var.subnet_id   
     vpc_security_group_ids      = var.vpc_security_group_ids
-    key_name                    = "haych_aws"
+    key_name                    = "ProjectTwo-Key"
 
     lifecycle {
         create_before_destroy = true

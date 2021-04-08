@@ -10,6 +10,7 @@ resource "aws_db_instance" "production" {
     parameter_group_name        = "default.mysql5.7"
     db_subnet_group_name        = aws_db_subnet_group.default.name
     vpc_security_group_ids      = var.vpc_security_group_ids
+    skip_final_snapshot         = true
 
     tags = {
         Name = "ProjectTwo-DBprod"
@@ -28,6 +29,7 @@ resource "aws_db_instance" "test" {
     parameter_group_name        = "default.mysql5.7"
     db_subnet_group_name        = aws_db_subnet_group.default.name
     vpc_security_group_ids      = var.vpc_security_group_ids
+    skip_final_snapshot         = true
 
     tags = {
         Name = "ProjectTwo-DBtest"
