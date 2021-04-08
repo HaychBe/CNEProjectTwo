@@ -52,3 +52,21 @@ Terraform is devops tools used to deploy infrastructure on a automatic level. Th
 I used Terraform in this project to create the VMs needed to host Kubernetes and Jenkins, as well as the test deployment
 
 ![terraform](./pictures/Tform.png)
+
+## Ansible
+
+Ansible is another devops tool used similarly to Terraform however instead of deploying infrastructure, it is used to deploy software across multiple hosts securely. This reduces the need for a user to remote into each individual machine to install applications. Instead you can use a series of _roles_,_playbooks_ and _inventory_ .yaml files to automate this process.
+
+Below is my ansible in action
+
+![ansible](./pictures/ansible.png)
+
+# Tracking my Project
+
+In order to track my project I used **Jira**
+
+I used the same _Kanban_ style workflow to track my progress through using sprints, stories and epics to track my progress along that way. 
+
+Below is a snipet of a sprint being used during my project:
+
+![jira](./pictures/jira.png)
