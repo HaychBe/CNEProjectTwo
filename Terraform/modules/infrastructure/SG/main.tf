@@ -21,4 +21,12 @@ resource "aws_security_group" "ProjectSG" {
         protocol  = "tcp"
         cidr_blocks = [var.PORT_Open]
     }
+
+    egress {
+        from_port = var.outbound_port
+        protocol  = "-1"
+        to_port   = var.outbound_port
+        cidr_blocks = [var.PORT_Open]
+
+    }
 }
