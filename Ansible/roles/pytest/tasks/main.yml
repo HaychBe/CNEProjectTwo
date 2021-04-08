@@ -1,2 +1,13 @@
 ---
 # tasks file for pytest
+- name: install python
+  apt:
+    name: "python"
+    state: present
+    update_cache: yes
+
+- name: install pytest
+  apt:
+    name: "python-pytest"
+    state: present
+    update_cache: yes

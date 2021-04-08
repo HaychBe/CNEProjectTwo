@@ -1,0 +1,8 @@
+- hosts: production
+  roles:
+  - jenkins
+  - kubernetes
+
+- hosts: test
+  roles:
+  - pytest
