@@ -1,13 +1,10 @@
 ---
 # tasks file for pytest
-- name: install python
-  apt:
-    name: "python"
-    state: present
-    update_cache: yes
+- name: Install Pytest
+  script: /home/ubuntu/ProjectTwo/scripts/pytest.sh
 
-- name: install pytest
-  apt:
-    name: "python-pytest"
-    state: present
-    update_cache: yes
+- name: install Docker compose  
+  script: /home/ubuntu/ProjectTwo/scripts/docker_compose.sh
+
+- name: Install Docker
+  script: /home/ubuntu/ProjectTwo/scripts/dockerv2.sh

@@ -2,10 +2,7 @@
 # tasks file for jenkins
 
 - name: Install Jenkins
-  script: /home/ubuntu/ProjectTwo/Ansible/roles/jenkins/files/jenkins.sh
-
-
-
+  script: /home/ubuntu/ProjectTwo/scripts/jenkins.sh
 
 
 # - name: Get Jenkins REPO

@@ -1,13 +1,13 @@
 production:
   hosts:
-    18.130.120.43:
+    3.8.139.17:
   vars:
     ansible_user: ubuntu
     ansible_ssh_private_key_file: '~/.ssh/id_rsa'
 
 test:
   hosts:
-    18.133.31.63:
+    35.178.92.244:
   vars:
     ansible_user: ubuntu
     ansible_ssh_private_key_file: '~/.ssh/id_rsa'

@@ -1,4 +1,17 @@
+---
+
 - hosts: production
+  become: true
+  # tasks:
+  #   - name: misc programs
+  #     script: /home/ubuntu/ProjectTwo/scripts/misc.sh
+
+  #   # - name: misc programs
+  #   #   script: /home/ubuntu/ProjectTwo/scripts/misc.sh
+    
+  #   - name: install docker
+  #     script: /home/ubuntu/ProjectTwo/scripts/docker.sh
+
   roles:
   - jenkins
   - kubernetes

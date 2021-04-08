@@ -3,8 +3,14 @@
 
 #installing docker
 
-- name: Install Kubernetes
-  script: /home/ubuntu/ProjectTwo/Ansible/roles/jenkins/files/kubernetes.sh
+- name: misc programs
+  script: /home/ubuntu/ProjectTwo/scripts/misc.sh
 
 - name: Install Kubernetes
-  script: /home/ubuntu/ProjectTwo/Ansible/roles/jenkins/files/docker.sh
+  script: /home/ubuntu/ProjectTwo/scripts/kubernetes.sh
+
+- name: Install Docker
+  script: /home/ubuntu/ProjectTwo/scripts/dockerv2.sh
+
+- name: install Docker compose  
+  script: /home/ubuntu/ProjectTwo/scripts/docker_compose.sh
