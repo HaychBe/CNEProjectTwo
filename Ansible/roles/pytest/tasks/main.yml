@@ -1,0 +1,10 @@
+---
+# tasks file for pytest
+- name: Install Pytest
+  script: /home/ubuntu/ProjectTwo/scripts/pytest.sh
+
+- name: install Docker compose  
+  script: /home/ubuntu/ProjectTwo/scripts/docker_compose.sh
+
+- name: Install Docker
+  script: /home/ubuntu/ProjectTwo/scripts/dockerv2.sh

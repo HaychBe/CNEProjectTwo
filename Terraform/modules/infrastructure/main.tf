@@ -1,40 +1,43 @@
+terraform {
+    required_providers {
+      aws = {
+          source = "hashicorp/aws"
+          version = "~> 3.0"
+        }
+    }
+}
+
 provider "aws" {
-    version                 = "~> 3.0"
-    region                  = var.region
-    shared_credentials_file = "~/.aws/credentials"
+    region  = var.region
 }
 
 module "aws_vpc" {
-    source          = "./vpc"
-
-    environment     = var.environment
+    source = "./vpc"
 }
 
 module "security_group" {
-    source      = "./SG"
-
-    environment = var.environment
-    vpc_id_SG   = module.aws_vpc.vpc_id
+    source = "./SG"
+    vpc_id_SG = module.aws_vpc.vpc_id
 }
 
-module "ec2_instances" {
-    source      = "./ec2"
-
-    environment = var.environment
-    subnet_id   = module.subnets.public_subnetA
-
-    tags = {
-        Name = "projectTwo-JenkinsKubernetes"
-    }
+module "ec2_instanceProd" {
+    source = "./ec2"
+    subnet_id = module.aws_vpc.public_subnetA
+    vpc_security_group_ids = [module.security_group.aws_psg_id]
 }
 
-module "ec2_instances" {
-    source      = "./ec2"
+module "ec2_instanceTest" {
+    source = "./ec2"
+    subnet_id = module.aws_vpc.public_subnetB
+    vpc_security_group_ids = [module.security_group.aws_psg_id]
+}
 
-    environment = var.environment
-    subnet_id   = module.subnets.public_subnetB
+module "RDS_instances" {
+    source                  = "./RDS"
+    username                = var.username
+    password                = var.password
+    public_subnetA          = module.aws_vpc.public_subnetA
+    public_subnetB          = module.aws_vpc.public_subnetB
+    vpc_security_group_ids  = [module.security_group.aws_psg_id]
 
-    tags = {
-        Name = "projectTwo-Test"
-    }
 }

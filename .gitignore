@@ -1,1 +1,8 @@
+#Removing all tfvars files
 *.tfvars
+
+
+**/.terraform/*
+
+.terraformrc
+terraform.rc
