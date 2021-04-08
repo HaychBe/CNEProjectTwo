@@ -3,56 +3,8 @@
 
 #installing docker
 
-- name: https packages
-  apt:
-    name: "{{ packages }}"
-    state: present
-    update_cache: yes
-  vars:
-    packages:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - gnupg-agent
-    - software-properties-common
+- name: Install Kubernetes
+  script: /home/ubuntu/ProjectTwo/Ansible/roles/jenkins/files/kubernetes.sh
 
-- name: Add docker key sign
-  apt_key:
-    url: https://download.docker.com/linux/ubuntu/gpg
-    state: present
-
-- name: add apt repo
-  apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
-    state: present
-
-- name: install docker/dependencies
-  apt:
-    name: "{{ packages }}"
-    state: present
-    update_cache: yes
-  vars:
-    packages:
-    - docker-ce
-    - docker-ce-cli
-    - containerd.io
-  notify:
-    - docker status
-
-#installing kubernetes
-- name: Add key singing for kubernetes
-  apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-    state: present
-
-- name: Add repo for kubernetes
-  apt_repository:
-    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
-    state: present
-    filename: kubernetes.list
-
-- name: install kubectl
-  apt:
-    name: kubectl
-    state: present
-    update_cache: yes
+- name: Install Kubernetes
+  script: /home/ubuntu/ProjectTwo/Ansible/roles/jenkins/files/docker.sh
